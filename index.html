@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Real Society - Agendamento</title>
+  <style>
+    :root {
+      --verde-gramado: #228B22;
+      --verde-claro: #32CD32;
+      --branco: #ffffff;
+      --preto: #000000;
+      --cinza-escuro: #2f4f4f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--verde-gramado), var(--verde-claro));
+      color: var(--preto);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background: var(--branco);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 20px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: var(--verde-gramado);
+      user-select: none;
+    }
+
+    /* Desenho bola estilizada SVG */
+    header svg {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      fill: var(--verde-gramado);
+      opacity: 0.3;
+    }
+
+    main {
+      background: var(--branco);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      max-width: 500px;
+      width: 90%;
+      margin: 30px 0 50px 0;
+    }
+
+    h2 {
+      color: var(--verde-gramado);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 6px 0;
+      font-weight: 700;
+      color: var(--preto);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--verde-gramado);
+      box-shadow: 0 0 8px rgba(34,139,34,0.5);
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      background-color: var(--verde-gramado);
+      color: var(--branco);
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--verde-claro);
+      transform: scale(1.05);
+    }
+
+    .agendamentos {
+      margin-top: 30px;
+    }
+
+    .agendamento-item {
+      background: var(--cinza-escuro);
+      color: var(--branco);
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .agendamento-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .agendamento-item strong {
+      color: var(--verde-claro);
+      font-size: 1.1rem;
+    }
+
+    .msg-sucesso {
+      display: none;
+      margin-bottom: 20px;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--branco);
+      margin-bottom: 20px;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Real Society</h1>
+    <!-- Bola SVG -->
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+      <circle cx="32" cy="32" r="30" stroke="none"/>
+      <path d="M32 2 L42 18 L58 18 L44 30 L50 46 L32 38 L14 46 L20 30 L6 18 L22 18 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </header>
+
+  <main>
+    <div id="msgSucesso" class="msg-sucesso">✅ Agendamento realizado com sucesso!</div>
+
+    <form id="formAgendamento">
+      <h2>Agende seu horário</h2>
+
+      <label for="nome">Nome completo:</label>
+      <input type="text" id="nome" placeholder="Digite seu nome" required />
+
+      <label for="data">Data:</label>
+      <input type="date" id="data" required />
+
+      <label for="hora">Hora de início:</label>
+      <select id="hora" required></select>
+
+      <label for="duracao">Duração (horas):</label>
+      <select id="duracao" required>
+        <option value="">Selecione duração</option>
+        <option value="1">1 hora (R$80)</option>
+        <option value="2">2 horas (R$160)</option>
+        <option value="3">3 horas (R$240)</option>
+        <option value="4">4 horas (R$320)</option>
+        <option value="5">5 horas (R$400)</option>
+      </select>
+
+      <label>Preço total:</label>
+      <input type="text" id="preco" readonly value="R$ 0,00" style="background:#eee; color:#333;" />
+
+      <button type="submit">Confirmar Agendamento</button>
+    </form>
+
+    <section class="agendamentos">
+      <h2>Meus Agendamentos</h2>
+      <div id="listaAgendamentos">
+        <p>Nenhum agendamento registrado.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Real Society ⚽️ - Seu jogo, sua paixão!
+  </footer>
+
+  <script>
+    const precoHora = 80;
+    const form = document.getElementById('formAgendamento');
+    const lista = document.getElementById('listaAgendamentos');
+    const horaSelect = document.getElementById('hora');
+    const duracaoSelect = document.getElementById('duracao');
+    const precoInput = document.getElementById('preco');
+    const dataInput = document.getElementById('data');
+    const msgSucesso = document.getElementById('msgSucesso');
+
+    // Gerar horários das 8h às 22h
+    function gerarHorarios() {
+      horaSelect.innerHTML = '<option value="">Selecione o horário</option>';
+      for(let h = 8; h <= 22; h++) {
+        const horaStr = (h < 10 ? '0' + h : h) + ':00';
+        const option = document.createElement('option');
+        option.value = horaStr;
+        option.textContent = horaStr;
+        horaSelect.appendChild(option);
+      }
+    }
+
+    // Atualiza o preço baseado na duração
+    function atualizarPreco() {
+      const duracao = parseInt(duracaoSelect.value) || 0;
+      precoInput.value = duracao > 0 ? `R$ ${duracao * precoHora},00` : 'R$ 0,00';
+    }
+
+    duracaoSelect.addEventListener('change', atualizarPreco);
+
+    // Carrega agendamentos do localStorage
+    function carregarAgendamentos() {
+      lista.innerHTML = '';
+      const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+      if(agendamentos.length === 0) {
+        lista.innerHTML = '<p>Nenhum agendamento registrado.</p>';
+        return;
+      }
+      agendamentos.forEach(({nome, data, hora, duracao, preco}) => {
+        const div = document.createElement('div');
+        div.classList.add('agendamento-item');
+        div.innerHTML = `
+          <strong>${nome}</strong><br/>
+          Data: ${data}<br/>
+          Início: ${hora} - Duração: ${duracao} hora(s)<br/>
+          Preço: R$ ${preco},00
+        `;
+        lista.appendChild(div);
+      });
+    }
+
+    // Verifica conflito de horários
+    function conflitoHorario(novaData, novoHora, novaDuracao, agendamentos) {
+      // Converte hora em minutos
+      function horaParaMinutos(horaStr) {
+        const [h, m] = horaStr.split(':').map(Number);
+        return h*60 + m;
+      }
+      const novoInicio = horaParaMinutos(novoHora);
+      const novoFim = novoInicio + (novaDuracao * 60);
+
+      return agendamentos.some(({data, hora, duracao}) => {
+        if(data !== novaData) return false;
+        const inicio = horaParaMinutos(hora);
+        const fim = inicio + (duracao * 60);
+        // Verifica se períodos se sobrepõem
+        return (novoInicio < fim && novoFim > inicio);
+      });
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const nome = form.nome.value.trim();
+      const data = form.data.value;
+      const hora = form.hora.value;
+      const duracao = parseInt(form.duracao.value);
+
+      if(!nome || !data || !hora || !duracao) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+
+      if(conflitoHorario(data, hora, duracao, agendamentos)) {
+        alert('⚠ Horário em conflito! Escolha outro horário ou data.');
+        return;
+      }
+
+      const preco = duracao * precoHora;
+
+      agendamentos.push({nome, data, hora, duracao, preco});
+      localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+
+      form.reset();
+      atualizarPreco();
+      carregarAgendamentos();
+
+      msgSucesso.style.display = 'block';
+      setTimeout(() => msgSucesso.style.display = 'none', 3500);
+    });
+
+    // Inicialização
+    gerarHorarios();
+    carregarAgendamentos();
+  </script>
+</body>
+</html>
