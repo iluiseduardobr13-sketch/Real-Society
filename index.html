@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-BR" >
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Real Society - Agendamento Moderno</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real Society | Agendamento de Campo</title>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
     :root {
-      --verde-escuro: #0B3D0B;
-      --verde-brilhante: #28A745;
-      --branco: #FFFFFF;
-      --preto: #1C1C1C;
-      --cinza-claro: #F5F5F5;
-      --cinza-escuro: #333333;
-      --sombra: rgba(0, 0, 0, 0.15);
+      --verde: #28a745;
+      --verde-escuro: #1c5d23;
+      --fundo: #f3f3f3;
+      --branco: #ffffff;
+      --cinza: #444;
+      --sombra: rgba(0, 0, 0, 0.1);
     }
 
     * {
@@ -25,357 +26,252 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #2f7a2f, #72c472);
-      color: var(--preto);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-bottom: 40px;
+      background: var(--fundo);
+      color: var(--cinza);
+      line-height: 1.6;
     }
 
     header {
-      width: 100%;
-      max-width: 900px;
-      background: var(--branco);
-      border-radius: 15px;
-      margin: 30px 15px 10px;
-      box-shadow: 0 10px 25px var(--sombra);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background: var(--verde-escuro);
+      color: var(--branco);
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
 
     header img {
       width: 100%;
-      max-height: 220px;
+      max-height: 250px;
       object-fit: cover;
-      border-bottom: 3px solid var(--verde-brilhante);
-    }
-
-    header h1 {
-      color: var(--verde-escuro);
-      font-weight: 700;
-      font-size: 2.8rem;
-      padding: 20px 0;
-      letter-spacing: 4px;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-      user-select: none;
+      display: block;
     }
 
     main {
+      max-width: 700px;
       background: var(--branco);
+      margin: 30px auto;
+      padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 12px 30px var(--sombra);
-      max-width: 500px;
-      width: 90%;
-      padding: 30px 40px 40px;
-      margin-top: 20px;
-      color: var(--cinza-escuro);
+      box-shadow: 0 8px 20px var(--sombra);
     }
 
-    main h2 {
+    h2 {
       color: var(--verde-escuro);
+      margin-bottom: 20px;
       text-align: center;
-      margin-bottom: 30px;
-      font-weight: 700;
-      font-size: 2rem;
     }
 
     label {
       display: block;
+      margin: 15px 0 5px;
       font-weight: 600;
-      margin-bottom: 8px;
-      margin-top: 20px;
-      color: var(--verde-escuro);
-      letter-spacing: 0.03em;
     }
 
     input, select {
       width: 100%;
-      padding: 14px 15px;
-      border-radius: 10px;
-      border: 1.8px solid var(--cinza-claro);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
       font-size: 1rem;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      font-weight: 500;
-      color: var(--preto);
     }
 
     input:focus, select:focus {
-      border-color: var(--verde-brilhante);
-      box-shadow: 0 0 10px var(--verde-brilhante);
+      border-color: var(--verde);
       outline: none;
-    }
-
-    #preco {
-      background: #e8f5e9;
-      color: var(--verde-escuro);
-      font-weight: 700;
-      cursor: default;
+      box-shadow: 0 0 6px var(--verde);
     }
 
     button {
-      margin-top: 35px;
       width: 100%;
-      padding: 16px 0;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      background: var(--verde-brilhante);
+      padding: 14px;
+      background: var(--verde);
       color: var(--branco);
       border: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 10px;
+      margin-top: 25px;
       cursor: pointer;
-      box-shadow: 0 8px 18px rgba(40,167,69,0.6);
-      transition: background-color 0.3s ease, transform 0.25s ease;
+      transition: background 0.3s ease;
     }
 
     button:hover {
-      background: #1e7e34;
-      transform: scale(1.05);
-      box-shadow: 0 10px 25px rgba(30,126,52,0.8);
+      background: #218838;
     }
 
-    .agendamentos {
-      margin-top: 40px;
+    .msg {
+      display: none;
+      text-align: center;
+      padding: 12px;
+      margin: 20px 0;
+      border-radius: 8px;
+      background-color: #d4edda;
+      color: #155724;
+      font-weight: 600;
     }
 
     .agendamento-item {
-      background: #e8f5e9;
-      border-left: 6px solid var(--verde-brilhante);
-      padding: 18px 22px;
-      margin-bottom: 18px;
-      border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.07);
-      transition: box-shadow 0.3s ease;
-      cursor: default;
-      font-weight: 600;
-    }
-
-    .agendamento-item:hover {
-      box-shadow: 0 8px 18px rgba(40,167,69,0.5);
-    }
-
-    .agendamento-item strong {
-      display: block;
-      font-size: 1.1rem;
-      color: var(--verde-escuro);
-      margin-bottom: 6px;
-    }
-
-    .msg-sucesso {
-      display: none;
-      text-align: center;
+      background: #e6f5ea;
+      border-left: 5px solid var(--verde);
+      margin: 15px 0;
       padding: 15px;
-      background-color: #28a745dd;
-      border-radius: 10px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 25px;
-      box-shadow: 0 6px 20px rgba(40,167,69,0.5);
-      user-select: none;
+      border-radius: 8px;
     }
 
     footer {
-      margin-top: auto;
-      color: var(--branco);
-      font-weight: 600;
-      font-size: 1rem;
-      user-select: none;
-      text-shadow: 0 0 8px rgba(0,0,0,0.3);
+      text-align: center;
+      padding: 20px;
+      background: var(--verde-escuro);
+      color: white;
+      margin-top: 40px;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
+      main {
+        margin: 15px;
+        padding: 20px;
+      }
+
       header h1 {
         font-size: 1.8rem;
-        letter-spacing: 2px;
-      }
-
-      main {
-        padding: 25px 20px 30px;
-      }
-
-      button {
-        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://images.unsplash.com/photo-1508923567004-3a6b8004f3d9?auto=format&fit=crop&w=900&q=80" alt="Campo de futebol gramado" />
     <h1>Real Society</h1>
+    <p>Agende seu horário no nosso campo de society ⚽</p>
+    <img src="https://images.unsplash.com/photo-1606857521015-fb4062f4d86c?auto=format&fit=crop&w=1500&q=80" alt="Campo de futebol society" />
   </header>
 
   <main>
-    <div id="msgSucesso" class="msg-sucesso">✅ Agendamento realizado com sucesso!</div>
+    <h2>📅 Novo Agendamento</h2>
 
-    <form id="formAgendamento" autocomplete="off">
-      <h2>Agende seu horário</h2>
+    <div class="msg" id="msgSucesso">✅ Agendamento realizado com sucesso!</div>
 
-      <label for="nome">Nome completo</label>
-      <input type="text" id="nome" placeholder="Digite seu nome" required />
+    <form id="form-agendamento">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" required />
 
-      <label for="data">Data</label>
+      <label for="data">Data:</label>
       <input type="date" id="data" required />
 
-      <label for="hora">Hora de início</label>
+      <label for="hora">Hora de início:</label>
       <select id="hora" required></select>
 
-      <label for="duracao">Duração (horas)</label>
+      <label for="duracao">Duração (horas):</label>
       <select id="duracao" required>
-        <option value="">Selecione duração</option>
-        <option value="1">1 hora (R$80)</option>
-        <option value="2">2 horas (R$160)</option>
-        <option value="3">3 horas (R$240)</option>
-        <option value="4">4 horas (R$320)</option>
-        <option value="5">5 horas (R$400)</option>
+        <option value="1">1 hora - R$80</option>
+        <option value="2">2 horas - R$160</option>
+        <option value="3">3 horas - R$240</option>
+        <option value="4">4 horas - R$320</option>
       </select>
 
-      <label>Preço total</label>
-      <input type="text" id="preco" readonly value="R$ 0,00" />
-
-      <button type="submit">Confirmar Agendamento</button>
+      <button type="submit">Agendar</button>
     </form>
 
-    <section class="agendamentos">
-      <h2>Meus Agendamentos</h2>
-      <div id="listaAgendamentos">
-        <p>Nenhum agendamento registrado.</p>
-      </div>
+    <section>
+      <h2>📋 Meus Agendamentos</h2>
+      <div id="lista-agendamentos"></div>
     </section>
   </main>
 
   <footer>
-    Real Society ⚽️ - Seu jogo, sua paixão!
+    © 2025 Real Society — Todos os direitos reservados ⚽
   </footer>
 
   <script>
     const precoHora = 80;
-    const form = document.getElementById('formAgendamento');
-    const lista = document.getElementById('listaAgendamentos');
-    const horaSelect = document.getElementById('hora');
-    const duracaoSelect = document.getElementById('duracao');
-    const precoInput = document.getElementById('preco');
-    const dataInput = document.getElementById('data');
-    const msgSucesso = document.getElementById('msgSucesso');
+    const form = document.getElementById("form-agendamento");
+    const lista = document.getElementById("lista-agendamentos");
+    const horaSelect = document.getElementById("hora");
+    const duracaoSelect = document.getElementById("duracao");
+    const msgSucesso = document.getElementById("msgSucesso");
 
-    // Chave exclusiva para localStorage
-    const storageKey = 'agendamentos_real_society';
+    const STORAGE_KEY = "agendamentos_real_society";
 
-    // Gera horários das 8h às 22h
     function gerarHorarios() {
-      horaSelect.innerHTML = '<option value="">Selecione um horário</option>';
+      horaSelect.innerHTML = '<option value="">Selecione uma hora</option>';
       for (let h = 8; h <= 22; h++) {
-        const horaFormatada = (h < 10 ? '0' + h : h) + ':00';
-        const option = document.createElement('option');
-        option.value = horaFormatada;
-        option.textContent = horaFormatada;
-        horaSelect.appendChild(option);
+        const hora = (h < 10 ? "0" + h : h) + ":00";
+        const opt = document.createElement("option");
+        opt.value = hora;
+        opt.textContent = hora;
+        horaSelect.appendChild(opt);
       }
     }
 
-    // Atualiza preço conforme duração
-    function atualizarPreco() {
-      const duracao = parseInt(duracaoSelect.value) || 0;
-      const total = duracao * precoHora;
-      precoInput.value = total > 0 ? `R$ ${total.toFixed(2).replace('.', ',')}` : 'R$ 0,00';
-    }
-
-    // Carrega agendamentos do localStorage e exibe
     function carregarAgendamentos() {
-      lista.innerHTML = '';
-      const agendamentos = JSON.parse(localStorage.getItem(storageKey)) || [];
+      lista.innerHTML = "";
+      const agendamentos = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
       if (agendamentos.length === 0) {
-        lista.innerHTML = '<p>Nenhum agendamento registrado.</p>';
+        lista.innerHTML = "<p>Nenhum agendamento até agora.</p>";
         return;
       }
 
-      agendamentos.forEach(({ nome, data, hora, duracao, preco }) => {
-        const div = document.createElement('div');
-        div.classList.add('agendamento-item');
+      agendamentos.forEach((a) => {
+        const div = document.createElement("div");
+        div.classList.add("agendamento-item");
         div.innerHTML = `
-          <strong>${nome}</strong>
-          <p>📅 ${data} às ${hora} - Duração: ${duracao} hora(s)</p>
-          <p>💰 Preço: R$ ${preco.toFixed(2).replace('.', ',')}</p>
+          <strong>👤 ${a.nome}</strong><br>
+          📆 ${a.data} — ⏰ ${a.hora} (${a.duracao}h)<br>
+          💰 Total: R$ ${a.preco.toFixed(2).replace(".", ",")}
         `;
         lista.appendChild(div);
       });
     }
 
-    // Verifica se o horário solicitado está livre
     function horarioDisponivel(data, horaInicio, duracao) {
-      const agendamentos = JSON.parse(localStorage.getItem(storageKey)) || [];
+      const agendamentos = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      const [inicio] = horaInicio.split(":").map(Number);
+      const fim = inicio + duracao;
 
-      // Transforma horas em números para comparação
-      const [hInicio, ] = horaInicio.split(':').map(Number);
-      const hFim = hInicio + duracao;
-
-      for (const agendamento of agendamentos) {
-        if (agendamento.data !== data) continue;
-
-        const [hAgStart] = agendamento.hora.split(':').map(Number);
-        const hAgEnd = hAgStart + agendamento.duracao;
-
-        // Verifica se existe sobreposição
-        if ((hInicio < hAgEnd) && (hFim > hAgStart)) {
-          return false; // conflito encontrado
-        }
-      }
-
-      return true; // horário disponível
+      return !agendamentos.some(a => {
+        if (a.data !== data) return false;
+        const agInicio = parseInt(a.hora.split(":")[0]);
+        const agFim = agInicio + a.duracao;
+        return (inicio < agFim && fim > agInicio);
+      });
     }
 
-    // Evento para atualizar preço ao mudar duração
-    duracaoSelect.addEventListener('change', atualizarPreco);
-
-    // Evento para limpar mensagens quando muda data/hora/duração
-    [dataInput, horaSelect, duracaoSelect].forEach(el => {
-      el.addEventListener('change', () => {
-        msgSucesso.style.display = 'none';
-      });
-    });
-
-    // Envio do formulário
-    form.addEventListener('submit', (e) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const nome = document.getElementById('nome').value.trim();
-      const data = dataInput.value;
+      const nome = document.getElementById("nome").value.trim();
+      const data = document.getElementById("data").value;
       const hora = horaSelect.value;
       const duracao = parseInt(duracaoSelect.value);
 
       if (!nome || !data || !hora || !duracao) {
-        alert('Por favor, preencha todos os campos.');
+        alert("Preencha todos os campos.");
         return;
       }
 
       if (!horarioDisponivel(data, hora, duracao)) {
-        alert('⚠️ Horário indisponível para o período selecionado. Escolha outro.');
+        alert("Este horário já está reservado.");
         return;
       }
 
-      const preco = duracao * precoHora;
+      const preco = precoHora * duracao;
+      const agendamentos = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
-      const agendamentos = JSON.parse(localStorage.getItem(storageKey)) || [];
       agendamentos.push({ nome, data, hora, duracao, preco });
-      localStorage.setItem(storageKey, JSON.stringify(agendamentos));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(agendamentos));
 
       form.reset();
-      atualizarPreco();
       carregarAgendamentos();
 
-      msgSucesso.style.display = 'block';
-
-      setTimeout(() => {
-        msgSucesso.style.display = 'none';
-      }, 3500);
+      msgSucesso.style.display = "block";
+      setTimeout(() => msgSucesso.style.display = "none", 3000);
     });
 
-    // Inicialização
     gerarHorarios();
-    atualizarPreco();
     carregarAgendamentos();
   </script>
 </body>
