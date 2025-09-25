@@ -1,170 +1,199 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Real Society - Agendamento</title>
+  <title>Real Society - Agendamento Moderno</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
     :root {
-      --verde-gramado: #228B22;
-      --verde-claro: #32CD32;
-      --branco: #ffffff;
-      --preto: #000000;
-      --cinza-escuro: #2f4f4f;
+      --verde-escuro: #0B3D0B;
+      --verde-brilhante: #28A745;
+      --branco: #FFFFFF;
+      --preto: #1C1C1C;
+      --cinza-claro: #F5F5F5;
+      --cinza-escuro: #333333;
+      --sombra: rgba(0, 0, 0, 0.15);
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, var(--verde-gramado), var(--verde-claro));
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2f7a2f, #72c472);
       color: var(--preto);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding-bottom: 40px;
     }
 
     header {
       width: 100%;
+      max-width: 900px;
       background: var(--branco);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      padding: 20px 0;
-      text-align: center;
-      position: relative;
+      border-radius: 15px;
+      margin: 30px 15px 10px;
+      box-shadow: 0 10px 25px var(--sombra);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--verde-brilhante);
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      font-weight: 900;
-      letter-spacing: 3px;
-      color: var(--verde-gramado);
+      color: var(--verde-escuro);
+      font-weight: 700;
+      font-size: 2.8rem;
+      padding: 20px 0;
+      letter-spacing: 4px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
       user-select: none;
-    }
-
-    /* Desenho bola estilizada SVG */
-    header svg {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      fill: var(--verde-gramado);
-      opacity: 0.3;
     }
 
     main {
       background: var(--branco);
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      border-radius: 15px;
+      box-shadow: 0 12px 30px var(--sombra);
       max-width: 500px;
       width: 90%;
-      margin: 30px 0 50px 0;
+      padding: 30px 40px 40px;
+      margin-top: 20px;
+      color: var(--cinza-escuro);
     }
 
-    h2 {
-      color: var(--verde-gramado);
-      margin-bottom: 20px;
+    main h2 {
+      color: var(--verde-escuro);
       text-align: center;
+      margin-bottom: 30px;
+      font-weight: 700;
+      font-size: 2rem;
     }
 
     label {
       display: block;
-      margin: 15px 0 6px 0;
-      font-weight: 700;
-      color: var(--preto);
+      font-weight: 600;
+      margin-bottom: 8px;
+      margin-top: 20px;
+      color: var(--verde-escuro);
+      letter-spacing: 0.03em;
     }
 
     input, select {
       width: 100%;
-      padding: 12px;
+      padding: 14px 15px;
       border-radius: 10px;
-      border: 1px solid #ccc;
+      border: 1.8px solid var(--cinza-claro);
       font-size: 1rem;
-      outline: none;
-      transition: 0.3s;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 500;
+      color: var(--preto);
     }
 
     input:focus, select:focus {
-      border-color: var(--verde-gramado);
-      box-shadow: 0 0 8px rgba(34,139,34,0.5);
+      border-color: var(--verde-brilhante);
+      box-shadow: 0 0 10px var(--verde-brilhante);
+      outline: none;
+    }
+
+    #preco {
+      background: #e8f5e9;
+      color: var(--verde-escuro);
+      font-weight: 700;
+      cursor: default;
     }
 
     button {
-      margin-top: 20px;
+      margin-top: 35px;
       width: 100%;
-      padding: 14px;
-      background-color: var(--verde-gramado);
+      padding: 16px 0;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: var(--verde-brilhante);
       color: var(--branco);
       border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 8px 18px rgba(40,167,69,0.6);
+      transition: background-color 0.3s ease, transform 0.25s ease;
     }
 
     button:hover {
-      background-color: var(--verde-claro);
+      background: #1e7e34;
       transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(30,126,52,0.8);
     }
 
     .agendamentos {
-      margin-top: 30px;
+      margin-top: 40px;
     }
 
     .agendamento-item {
-      background: var(--cinza-escuro);
-      color: var(--branco);
-      padding: 15px;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
-      transition: transform 0.2s ease;
+      background: #e8f5e9;
+      border-left: 6px solid var(--verde-brilhante);
+      padding: 18px 22px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+      transition: box-shadow 0.3s ease;
+      cursor: default;
+      font-weight: 600;
     }
 
     .agendamento-item:hover {
-      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(40,167,69,0.5);
     }
 
     .agendamento-item strong {
-      color: var(--verde-claro);
+      display: block;
       font-size: 1.1rem;
+      color: var(--verde-escuro);
+      margin-bottom: 6px;
     }
 
     .msg-sucesso {
       display: none;
-      margin-bottom: 20px;
-      padding: 12px;
-      background-color: #4CAF50;
-      color: white;
-      font-weight: bold;
-      border-radius: 8px;
       text-align: center;
+      padding: 15px;
+      background-color: #28a745dd;
+      border-radius: 10px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 25px;
+      box-shadow: 0 6px 20px rgba(40,167,69,0.5);
+      user-select: none;
     }
 
     footer {
-      text-align: center;
+      margin-top: auto;
       color: var(--branco);
-      margin-bottom: 20px;
       font-weight: 600;
+      font-size: 1rem;
       user-select: none;
+      text-shadow: 0 0 8px rgba(0,0,0,0.3);
     }
 
     @media (max-width: 480px) {
       header h1 {
         font-size: 1.8rem;
+        letter-spacing: 2px;
       }
 
       main {
-        padding: 20px;
+        padding: 25px 20px 30px;
       }
 
       button {
@@ -175,30 +204,26 @@
 </head>
 <body>
   <header>
+    <img src="https://images.unsplash.com/photo-1508923567004-3a6b8004f3d9?auto=format&fit=crop&w=900&q=80" alt="Campo de futebol gramado" />
     <h1>Real Society</h1>
-    <!-- Bola SVG -->
-    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
-      <circle cx="32" cy="32" r="30" stroke="none"/>
-      <path d="M32 2 L42 18 L58 18 L44 30 L50 46 L32 38 L14 46 L20 30 L6 18 L22 18 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-    </svg>
   </header>
 
   <main>
     <div id="msgSucesso" class="msg-sucesso">✅ Agendamento realizado com sucesso!</div>
 
-    <form id="formAgendamento">
+    <form id="formAgendamento" autocomplete="off">
       <h2>Agende seu horário</h2>
 
-      <label for="nome">Nome completo:</label>
+      <label for="nome">Nome completo</label>
       <input type="text" id="nome" placeholder="Digite seu nome" required />
 
-      <label for="data">Data:</label>
+      <label for="data">Data</label>
       <input type="date" id="data" required />
 
-      <label for="hora">Hora de início:</label>
+      <label for="hora">Hora de início</label>
       <select id="hora" required></select>
 
-      <label for="duracao">Duração (horas):</label>
+      <label for="duracao">Duração (horas)</label>
       <select id="duracao" required>
         <option value="">Selecione duração</option>
         <option value="1">1 hora (R$80)</option>
@@ -208,8 +233,8 @@
         <option value="5">5 horas (R$400)</option>
       </select>
 
-      <label>Preço total:</label>
-      <input type="text" id="preco" readonly value="R$ 0,00" style="background:#eee; color:#333;" />
+      <label>Preço total</label>
+      <input type="text" id="preco" readonly value="R$ 0,00" />
 
       <button type="submit">Confirmar Agendamento</button>
     </form>
@@ -236,101 +261,121 @@
     const dataInput = document.getElementById('data');
     const msgSucesso = document.getElementById('msgSucesso');
 
-    // Gerar horários das 8h às 22h
+    // Chave exclusiva para localStorage
+    const storageKey = 'agendamentos_real_society';
+
+    // Gera horários das 8h às 22h
     function gerarHorarios() {
-      horaSelect.innerHTML = '<option value="">Selecione o horário</option>';
-      for(let h = 8; h <= 22; h++) {
-        const horaStr = (h < 10 ? '0' + h : h) + ':00';
+      horaSelect.innerHTML = '<option value="">Selecione um horário</option>';
+      for (let h = 8; h <= 22; h++) {
+        const horaFormatada = (h < 10 ? '0' + h : h) + ':00';
         const option = document.createElement('option');
-        option.value = horaStr;
-        option.textContent = horaStr;
+        option.value = horaFormatada;
+        option.textContent = horaFormatada;
         horaSelect.appendChild(option);
       }
     }
 
-    // Atualiza o preço baseado na duração
+    // Atualiza preço conforme duração
     function atualizarPreco() {
       const duracao = parseInt(duracaoSelect.value) || 0;
-      precoInput.value = duracao > 0 ? `R$ ${duracao * precoHora},00` : 'R$ 0,00';
+      const total = duracao * precoHora;
+      precoInput.value = total > 0 ? `R$ ${total.toFixed(2).replace('.', ',')}` : 'R$ 0,00';
     }
 
-    duracaoSelect.addEventListener('change', atualizarPreco);
-
-    // Carrega agendamentos do localStorage
+    // Carrega agendamentos do localStorage e exibe
     function carregarAgendamentos() {
       lista.innerHTML = '';
-      const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
-      if(agendamentos.length === 0) {
+      const agendamentos = JSON.parse(localStorage.getItem(storageKey)) || [];
+      if (agendamentos.length === 0) {
         lista.innerHTML = '<p>Nenhum agendamento registrado.</p>';
         return;
       }
-      agendamentos.forEach(({nome, data, hora, duracao, preco}) => {
+
+      agendamentos.forEach(({ nome, data, hora, duracao, preco }) => {
         const div = document.createElement('div');
         div.classList.add('agendamento-item');
         div.innerHTML = `
-          <strong>${nome}</strong><br/>
-          Data: ${data}<br/>
-          Início: ${hora} - Duração: ${duracao} hora(s)<br/>
-          Preço: R$ ${preco},00
+          <strong>${nome}</strong>
+          <p>📅 ${data} às ${hora} - Duração: ${duracao} hora(s)</p>
+          <p>💰 Preço: R$ ${preco.toFixed(2).replace('.', ',')}</p>
         `;
         lista.appendChild(div);
       });
     }
 
-    // Verifica conflito de horários
-    function conflitoHorario(novaData, novoHora, novaDuracao, agendamentos) {
-      // Converte hora em minutos
-      function horaParaMinutos(horaStr) {
-        const [h, m] = horaStr.split(':').map(Number);
-        return h*60 + m;
-      }
-      const novoInicio = horaParaMinutos(novoHora);
-      const novoFim = novoInicio + (novaDuracao * 60);
+    // Verifica se o horário solicitado está livre
+    function horarioDisponivel(data, horaInicio, duracao) {
+      const agendamentos = JSON.parse(localStorage.getItem(storageKey)) || [];
 
-      return agendamentos.some(({data, hora, duracao}) => {
-        if(data !== novaData) return false;
-        const inicio = horaParaMinutos(hora);
-        const fim = inicio + (duracao * 60);
-        // Verifica se períodos se sobrepõem
-        return (novoInicio < fim && novoFim > inicio);
-      });
+      // Transforma horas em números para comparação
+      const [hInicio, ] = horaInicio.split(':').map(Number);
+      const hFim = hInicio + duracao;
+
+      for (const agendamento of agendamentos) {
+        if (agendamento.data !== data) continue;
+
+        const [hAgStart] = agendamento.hora.split(':').map(Number);
+        const hAgEnd = hAgStart + agendamento.duracao;
+
+        // Verifica se existe sobreposição
+        if ((hInicio < hAgEnd) && (hFim > hAgStart)) {
+          return false; // conflito encontrado
+        }
+      }
+
+      return true; // horário disponível
     }
 
-    form.addEventListener('submit', e => {
+    // Evento para atualizar preço ao mudar duração
+    duracaoSelect.addEventListener('change', atualizarPreco);
+
+    // Evento para limpar mensagens quando muda data/hora/duração
+    [dataInput, horaSelect, duracaoSelect].forEach(el => {
+      el.addEventListener('change', () => {
+        msgSucesso.style.display = 'none';
+      });
+    });
+
+    // Envio do formulário
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const nome = form.nome.value.trim();
-      const data = form.data.value;
-      const hora = form.hora.value;
-      const duracao = parseInt(form.duracao.value);
+      const nome = document.getElementById('nome').value.trim();
+      const data = dataInput.value;
+      const hora = horaSelect.value;
+      const duracao = parseInt(duracaoSelect.value);
 
-      if(!nome || !data || !hora || !duracao) {
+      if (!nome || !data || !hora || !duracao) {
         alert('Por favor, preencha todos os campos.');
         return;
       }
 
-      const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
-
-      if(conflitoHorario(data, hora, duracao, agendamentos)) {
-        alert('⚠ Horário em conflito! Escolha outro horário ou data.');
+      if (!horarioDisponivel(data, hora, duracao)) {
+        alert('⚠️ Horário indisponível para o período selecionado. Escolha outro.');
         return;
       }
 
       const preco = duracao * precoHora;
 
-      agendamentos.push({nome, data, hora, duracao, preco});
-      localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+      const agendamentos = JSON.parse(localStorage.getItem(storageKey)) || [];
+      agendamentos.push({ nome, data, hora, duracao, preco });
+      localStorage.setItem(storageKey, JSON.stringify(agendamentos));
 
       form.reset();
       atualizarPreco();
       carregarAgendamentos();
 
       msgSucesso.style.display = 'block';
-      setTimeout(() => msgSucesso.style.display = 'none', 3500);
+
+      setTimeout(() => {
+        msgSucesso.style.display = 'none';
+      }, 3500);
     });
 
     // Inicialização
     gerarHorarios();
+    atualizarPreco();
     carregarAgendamentos();
   </script>
 </body>
